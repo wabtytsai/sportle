@@ -1,0 +1,11 @@
+<!-- Material Kit -->
+<link href="/assets/css/material-kit.css?v=2.0.7" rel="stylesheet" />
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}

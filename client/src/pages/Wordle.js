@@ -5,7 +5,7 @@ import { useFetch } from '../utils/hooks';
 
 import GuessRow from './GuessRow';
 
-const MAX_GUESSES = 5;
+const MAX_GUESSES = 6;
 
 function Wordle() {
     const solution = useFetch(
@@ -31,12 +31,12 @@ function Wordle() {
     }, []);
 
     const guessRows = [];
-    for (let i = 0; i < MAX_GUESSES; i++) {
-        if (i >= attempts.length) {
-            guessRows.push(<GuessRow key={i} word={null} solution={solution} />);
-        } else {
-            guessRows.push(<GuessRow key={i} word={attempts[i]} solution={solution} />);
-        }
+    attempts.forEach((attempt, i) => {
+        guessRows.push(<GuessRow key={i} word={attempt} solution={solution} />);
+    });
+    guessRows.push(<GuessRow word={currentGuess} solution={solution} />);
+    for (let i = attempts.length + 1; i < MAX_GUESSES; i++) {
+        guessRows.push(<GuessRow key={i} word={attempts[i]} solution={solution} />);
     }
 
     return (
@@ -44,7 +44,7 @@ function Wordle() {
             <h1 className="header">WORDLE</h1>
             <div className="guesses">
                 {guessRows}
-                <GuessRow word={currentGuess} solution={solution} />
+                
             </div>
         </div>
     );

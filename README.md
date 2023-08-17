@@ -13,3 +13,5 @@ npm start
 cd api
 npm start
 ```
+
+Client code mostly live under `sportle/client/src`, while server code live under `sportle/api/`

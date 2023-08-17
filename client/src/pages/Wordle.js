@@ -33,9 +33,9 @@ function Wordle() {
     const guessRows = [];
     for (let i = 0; i < MAX_GUESSES; i++) {
         if (i >= attempts.length) {
-            guessRows.push(<GuessRow key={i} word={null} />);
+            guessRows.push(<GuessRow key={i} word={null} solution={solution} />);
         } else {
-            guessRows.push(<GuessRow key={i} word={attempts[i]} />);
+            guessRows.push(<GuessRow key={i} word={attempts[i]} solution={solution} />);
         }
     }
 

@@ -38,3 +38,15 @@ code {
   border-style: solid;
   border-width: 2px;
 }
+
+.correct {
+  background-color: green;
+}
+
+.partially-correct {
+  background-color: yellow;
+}
+
+.incorrect {
+  background-color: grey;
+}

@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+table, th, td {
+  border: 1px solid;
+  background-color: aqua;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.team-selector {
+  text-align: center;
+}
+
+.player-input {
+  text-align: center;
+}

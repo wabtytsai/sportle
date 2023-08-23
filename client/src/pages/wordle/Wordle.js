@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useCallback, useEffect, useState } from 'react';
-import { useFetch } from '../utils/hooks';
+import { useFetch } from '../../utils/hooks';
 
 import GuessRow from './GuessRow';
 
@@ -9,7 +9,7 @@ const MAX_GUESSES = 6;
 
 function Wordle() {
     const solution = useFetch(
-        'http://localhost:8000/api/getWord'
+        'http://localhost:8000/wordle/getWord'
     );
     const [currentGuess, setCurrentGuess] = useState('');
     const [attempts, setAttempts] = useState([]);

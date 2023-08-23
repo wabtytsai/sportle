@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-table, th, td {
-  border: 1px solid;
-  background-color: aqua;
+th {
+  text-align: center !important;
 }
 
 td {

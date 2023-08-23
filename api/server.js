@@ -1,5 +1,6 @@
 const express = require('express');
 const wordle = require('./wordle/wordle');
+const sportsGrid = require('./sports-grid/sports-grid');
 
 const app = express();
 
@@ -12,6 +13,8 @@ app.use(function (req, res, next) {
 });
 
 app.use('/wordle', wordle);
+
+app.use('/sports-grid', sportsGrid);
 
 
 app.listen(8000, () => {

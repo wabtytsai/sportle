@@ -17,6 +17,11 @@ function Home() {
                     Wordle
                 </button>
             </Link>
+            <Link to={'./sports-grid'}>
+                <button>
+                    Sports Grid
+                </button>
+            </Link>
         </div>
     );
 }

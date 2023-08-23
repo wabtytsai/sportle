@@ -1,5 +1,7 @@
 const seedrandom = require('seedrandom');
 
+const PUZZLE_SIZE = 3;
+
 const shuffle = (array, seed=null) => {
     // use today's date as default seed
     const rng = seedrandom(seed || new Date().toJSON().slice(0, 10));
@@ -21,16 +23,16 @@ const constructPuzzle = (teamsJSON) => {
     const teams = Object.keys(teamsJSON);
     const shuffledTeams = shuffle(teams);
 
-    const rows = teams.slice(0, 3).map(team => teamsJSON[team]);
+    const rows = teams.slice(0, PUZZLE_SIZE).map(team => teamsJSON[team]);
     const cols = [];
 
-    for (let i = 3; i < teams.length; i++) {
+    for (let i = PUZZLE_SIZE; i < teams.length; i++) {
         const col = teamsJSON[teams[i]];
         if (rows.every(row => hasOverlap(row.Players, col.Players))) {
             cols.push(col);
         }
 
-        if (cols.length === 3) {
+        if (cols.length === PUZZLE_SIZE) {
             break;
         }
     }

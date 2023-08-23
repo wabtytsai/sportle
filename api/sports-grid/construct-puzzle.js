@@ -21,7 +21,7 @@ const hasOverlap = (group1, group2) => {
 
 const constructPuzzle = (teamsJSON) => {
     const teams = Object.keys(teamsJSON);
-    const shuffledTeams = shuffle(teams);
+    shuffle(teams);
 
     const rows = teams.slice(0, PUZZLE_SIZE).map(team => teamsJSON[team]);
     const cols = [];

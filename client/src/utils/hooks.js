@@ -1,22 +1,14 @@
 import { useState, useEffect } from 'react';
 
-export const useFetch = (url, setIsLoading) => {
+export const useFetch = (url) => {
 
     const [data, setData] = useState([]);
 
-    async function fetchUrl() {
-        if (!!setIsLoading) {
-            setIsLoading(true);
-        }
-        
+    async function fetchUrl() {      
         const response = await fetch(url);
         const json = await response.json();
 
         setData(json);
-
-        if (!!setIsLoading) {
-            setIsLoading(false);
-        }
     }
 
     useEffect(() => {

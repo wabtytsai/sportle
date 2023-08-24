@@ -3,14 +3,12 @@
 import Table from 'react-bootstrap/Table';
 import Spinner from 'react-bootstrap/Spinner';
 
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import PlayerInput from './PlayerInput';
 import TeamLogo from './TeamLogo';
 
 import * as constants from '../../utils/constants';
-import { useFetch } from '../../utils/hooks';
 
 export default function Grid() {
     const sport = 'NBA';
@@ -19,11 +17,19 @@ export default function Grid() {
     const logoSrc = constants.logos[sport];
 
     const [isLoading, setIsLoading] = useState(true);
+    const [data, setData] = useState([]);
 
-    const data = useFetch(dataUrl, setIsLoading);
+    useEffect(() => {
+        async function fetchGrid() {
+            const response = await fetch(dataUrl);
+            const json = await response.json();
+    
+            setData(json);
+            setIsLoading(false);
+        }
 
-    const tableHeaders = [];
-    const tableRows = [];
+        fetchGrid();
+    }, [])
 
     if (isLoading) {
         return(
@@ -32,8 +38,8 @@ export default function Grid() {
             </div>)
     }
 
-    data.cols.forEach(team => tableHeaders.push(<TeamLogo key={team.Name} source={team.Logo}/>))
-    
+    const tableHeaders = data.cols.map(team => (<TeamLogo key={team.Name} source={team.Logo}/>));
+    const tableRows = [];
 
     for (let i = 0; i < data.rows.length; i++) {
         const team = data.rows[i];
@@ -52,7 +58,7 @@ export default function Grid() {
         <Table variant="white" bordered={true}>
             <thead>
                 <tr>
-                    <TeamLogo key={'NBA'} source={logoSrc}/>
+                    <TeamLogo key={sport} source={logoSrc}/>
                     {tableHeaders}
                 </tr>
                 {tableRows}

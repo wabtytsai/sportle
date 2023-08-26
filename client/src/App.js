@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Wordle from './pages/wordle/Wordle';
-import Grid from './pages/sports-grid/grid';
+import Grid from './pages/sports-grid/Grid';
 
 function App() {
     return (

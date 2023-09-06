@@ -2,10 +2,21 @@
 
 import React from "react"
 
-export default function PlayerInput() {
+import TextInput from 'react-autocomplete-input';
+import 'react-autocomplete-input/dist/bundle.css';
+
+export default function PlayerInput({ players }) {
+    
     return (
         <div className="player-input">
-            <input></input>
+            <div className="player-input-text-area-container">
+                <TextInput
+                    className="player-input-text-area"
+                    trigger={''}
+                    options={players}
+                    matchAny={true}
+                />
+            </div>
         </div>
     )
 }

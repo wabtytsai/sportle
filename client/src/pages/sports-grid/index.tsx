@@ -14,7 +14,7 @@ export default function Grid() {
     const logoSrc = constants.logos[sport];
 
     // TODO(tseddie): generalize this
-    const data = useMemo(getBasketballPuzzle, sport); 
+    const data = useMemo(getBasketballPuzzle, [sport]); 
 
     const tableHeaders = data.cols.map(team => (<TeamLogo key={team.Name} source={team.Logo}/>));
     const tableRows = [];

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import Wordle from './pages/wordle/Wordle';
-import Grid from './pages/sports-grid/Grid';
+import Home from './Home';
+import Wordle from './pages/wordle';
+import Grid from './pages/sports-grid';
 
 function App() {
     return (

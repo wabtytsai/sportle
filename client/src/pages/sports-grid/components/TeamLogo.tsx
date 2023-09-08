@@ -1,8 +1,10 @@
-'use client'
-
 import React from "react"
 
-export default function TeamLogo({ source }) {
+interface Props {
+    source: string
+}
+
+export default function TeamLogo({ source }: Props) {
     return (
         <th>
             <img src={source}/>

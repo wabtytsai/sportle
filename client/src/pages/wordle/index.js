@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFetch } from '../../utils/hooks';
 
 import GuessRow from './GuessRow';

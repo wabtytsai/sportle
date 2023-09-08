@@ -12,6 +12,7 @@ function Home() {
         'http://localhost:8000/wordle/getWord'
     );
     const [currentGuess, setCurrentGuess] = useState('');
+    // eslint-disable-next-line
     const [attempts, setAttempts] = useState([]);
 
     useEffect(() => {

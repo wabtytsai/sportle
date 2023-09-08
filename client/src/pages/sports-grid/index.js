@@ -2,10 +2,11 @@
 
 import Table from 'react-bootstrap/Table';
 import React, { useMemo } from 'react';
-import PlayerInput from './PlayerInput';
-import TeamLogo from './TeamLogo';
+import PlayerInput from './components/PlayerInput';
+import TeamLogo from './components/TeamLogo';
 import { getPuzzle as getBasketballPuzzle } from './games/basketball';
 import * as constants from '../../utils/constants';
+import './SportsGrid.css';
 
 export default function Grid() {
     const sport = 'NBA';

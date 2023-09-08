@@ -7,7 +7,7 @@ import GuessRow from './GuessRow';
 
 const MAX_GUESSES = 6;
 
-function Wordle() {
+function Home() {
     const solution = useFetch(
         'http://localhost:8000/wordle/getWord'
     );
@@ -50,4 +50,4 @@ function Wordle() {
     );
 }
 
-export default Wordle;
+export default Home;

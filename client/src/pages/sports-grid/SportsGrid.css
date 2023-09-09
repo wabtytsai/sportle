@@ -17,3 +17,18 @@ td {
 .player-input {
   text-align: center;
 }
+
+.player-input-text-area-container {
+  width: fit-content;
+  margin: auto;
+}
+
+.player-input-text-area {
+  resize: none;
+  height: 30px;
+}
+
+.react-autocomplete-input {
+  top: unset !important;
+  left: unset !important;
+}

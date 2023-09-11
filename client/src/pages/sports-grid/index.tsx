@@ -2,7 +2,7 @@ import Table from 'react-bootstrap/Table';
 import React, { useMemo, useRef } from 'react';
 import PlayerInput from './components/PlayerInput';
 import TeamLogo from './components/TeamLogo';
-import { Player, type Game, type Puzzle } from './games/game';
+import { type Game, type Puzzle } from './games/game';
 import { getSportsGame, SportsType } from './games/sports-game-service';
 import './SportsGrid.css';
 

@@ -1,6 +1,7 @@
 import teamsDataJSON from './data/basketball-teams.json';
 import playersDataJSON from './data/basketball-players.json';
 import { Game, TeamsData, PlayersData } from './game';
+import Logo from '../../../assets/NBA-logo.png';
 
 export class BasketballGame extends Game {
     private playersData: PlayersData;
@@ -21,8 +22,7 @@ export class BasketballGame extends Game {
     }
 
     public getLogo(): string {
-        // TODO(tian) store this locally rather than rely on cdn of someone's png
-        return 'https://cdn.ssref.net/req/202308101/tlogo/bbr/NBA.png'
+        return Logo;
     }
 
 }

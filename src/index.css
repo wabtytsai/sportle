@@ -12,41 +12,24 @@ code {
     monospace;
 }
 
-.wordle {
+#header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  height: 65px;
+  border-bottom: 1px solid;
+  padding: 0 16px;
 }
 
-.guesses {
+#title {
+  flex-grow: 2;
+}
+
+#nav {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.guess-row {
-  display: flex;
-  gap: 10px;
-}
-
-.letter-tile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-style: solid;
-  border-width: 2px;
-}
-
-.correct {
-  background-color: green;
-}
-
-.partially-correct {
-  background-color: yellow;
-}
-
-.incorrect {
-  background-color: grey;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 5px;
 }

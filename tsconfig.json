@@ -1,7 +1,11 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "lib": ["dom", "dom.iterable", "esnext"],
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
         "allowJs": true,
         "skipLibCheck": true,
         "strict": true,
@@ -13,11 +17,12 @@
         "outDir": "./build/",
         "sourceMap": true,
         "strictNullChecks": true,
-        "jsx": "react"
-
+        "jsx": "preserve"
     },
     "include": [
         "./src/"
     ],
-    "exclude": ["node_modules"]
+    "exclude": [
+        "node_modules"
+    ]
 }

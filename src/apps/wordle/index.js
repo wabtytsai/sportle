@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { useEffect, useState } from 'react';
+import './wordle.css';
 
 import GuessRow from './GuessRow';
 

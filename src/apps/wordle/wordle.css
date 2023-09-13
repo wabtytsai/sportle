@@ -1,0 +1,38 @@
+.wordle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guesses {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.guess-row {
+  display: flex;
+  gap: 10px;
+}
+
+.letter-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.correct {
+  background-color: green;
+}
+
+.partially-correct {
+  background-color: yellow;
+}
+
+.incorrect {
+  background-color: grey;
+}

@@ -1,16 +1,14 @@
 
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useFetch } from '../../utils/hooks';
 
 import GuessRow from './GuessRow';
 
 const MAX_GUESSES = 6;
 
 function Home() {
-    const solution = useFetch(
-        'http://localhost:8000/wordle/getWord'
-    );
+    // TODO: generate words
+    const solution = "GUESS";
     const [currentGuess, setCurrentGuess] = useState('');
     // eslint-disable-next-line
     const [attempts, setAttempts] = useState([]);
@@ -45,7 +43,7 @@ function Home() {
             <h1 className="header">WORDLE</h1>
             <div className="guesses">
                 {guessRows}
-                
+
             </div>
         </div>
     );

@@ -2,7 +2,7 @@ import Table from 'react-bootstrap/Table';
 import React, { useMemo, useRef } from 'react';
 import PlayerInput from './components/PlayerInput';
 import TeamLogo from './components/TeamLogo';
-import { type Game, type Puzzle } from './games/game';
+import { Player, type Game, type Puzzle } from './games/game';
 import { getSportsGame, SportsType } from './games/sports-game-service';
 import './SportsGrid.css';
 
@@ -13,11 +13,8 @@ type Props = {
 export default function Grid({ sports }: Props) {
     const gameService = useRef<Game>(getSportsGame(sports));
 
-    const puzzle = useMemo<Puzzle>(() => gameService.current.getPuzzle(), []);
-    const playerNames = useMemo<string[]>(() => {
-        const players = gameService.current.getPlayers();
-        return players.map(player => player.player_name);
-    }, []);
+    const puzzle: Puzzle = useMemo<Puzzle>(() => gameService.current.getPuzzle(), []);
+    const players: Player[] = gameService.current.getPlayers();
 
     const tableHeaders = puzzle.cols.map(team => (<TeamLogo key={team.Name} source={team.Logo} />));
     const tableRows = [];
@@ -27,9 +24,9 @@ export default function Grid({ sports }: Props) {
         tableRows.push(
             <tr key={i}>
                 <TeamLogo source={team.Logo} />
-                <td><PlayerInput pos={{ col: 0, row: i }} players={playerNames} /></td>
-                <td><PlayerInput pos={{ col: 1, row: i }} players={playerNames} /></td>
-                <td><PlayerInput pos={{ col: 2, row: i }} players={playerNames} /></td>
+                <td><PlayerInput teams={{ col: puzzle.cols[0], row: puzzle.rows[i] }} players={players} /></td>
+                <td><PlayerInput teams={{ col: puzzle.cols[1], row: puzzle.rows[i] }} players={players} /></td>
+                <td><PlayerInput teams={{ col: puzzle.cols[2], row: puzzle.rows[i] }} players={players} /></td>
             </tr>
         );
     }

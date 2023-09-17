@@ -14,7 +14,7 @@ export default function Grid({ sports }: Props) {
     const gameService = useRef<Game>(getSportsGame(sports));
 
     const puzzle: Puzzle = useMemo<Puzzle>(() => gameService.current.getPuzzle(), []);
-    const players: Player[] = gameService.current.getPlayers();
+    const players: Player[] = useMemo<Player[]>(() => gameService.current.getPlayers(), []);
 
     const tableHeaders = puzzle.cols.map(team => (<TeamLogo key={team.Name} source={team.Logo} />));
     const tableRows = [];

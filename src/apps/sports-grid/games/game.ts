@@ -11,6 +11,8 @@ export type Player = {
     player_bday: string,
     player_img: string,
     player_team_data: string[][],
+    player_debut: string,
+    player_career_length: string | number,
     [key: string]: any, // allowing arbitrary fields
 }
 export type PlayersData = Record<string, Player>;

@@ -9,39 +9,44 @@ interface Props {
         col: Team,
         row: Team,
     },
-    players: Player[]
+    players: Player[],
+    correctGuess: () => void;
+    wrongGuess: () => void;
+    isInputDisabled: boolean;
 }
 
-export default function PlayerInput({ teams, players }: Props) {
-    const [isDisabled, setIsDisabled] = useState(false);
-    const [correctAnswer, setCorrectAnswer] = useState('');
+export default function PlayerInput({ teams, players, correctGuess, wrongGuess, isInputDisabled }: Props) {
+    const [isCorrect, setIsCorrect] = useState(false);
+    const [showOptions, setShowOptions] = useState(false);
 
     return (
         <div className="player-input">
             <div className="player-input-text-area-container">
                 <Autocomplete
-                    options={players}
-                    getOptionLabel={(player: Player) => formatPlayerName(player)}
+                    freeSolo
+                    options={showOptions ? players : []}
+                    getOptionLabel={(player: String | Player) => formatPlayerName(player)}
                     onChange={(_event, value) => validatePlayerSelection(value)}
-                    disabled={isDisabled}
+                    onInputChange={onInputChange}
+                    disabled={isInputDisabled || isCorrect} 
                 />
-                { correctAnswer === 'correct' ? <Chip color="success"variant="solid">Correct</Chip> : null}
-                { correctAnswer === 'incorrect' ? <Chip color="danger"variant="solid">Incorrect</Chip> : null}
+                { isCorrect ? <Chip color="success"variant="solid">Correct</Chip> : null }
             </div>
         </div>
     )
 
-    function validatePlayerSelection(player: Player | null) {
-        if (player === null) {
+    function validatePlayerSelection(input : String | Player | null) {
+        if (input === null || typeof input === 'string') {
             return;
         }
 
-        setIsDisabled(true);
+        let player = input as Player;
 
         if (hasPlayerPlayedForTeam(player, teams.col) && hasPlayerPlayedForTeam(player, teams.row)) {
-            setCorrectAnswer('correct');
+            correctGuess();
+            setIsCorrect(true);
         } else {
-            setCorrectAnswer('incorrect');
+            wrongGuess();
         }
     }
 
@@ -49,12 +54,26 @@ export default function PlayerInput({ teams, players }: Props) {
         return player.player_team_data.filter((t) => t[0] === team.Name).length > 0;
     }
 
-    function formatPlayerName(player: Player): string {
+    function formatPlayerName(input: String | Player): string {
+        if (typeof input === 'string') {
+            return '';
+        }
+
+        let player = input as Player;
+
         if (player.player_debut === '') {
             return player.player_name;
         }
 
         const playerFirstYear: number = new Date(player.player_debut).getFullYear();
         return `${player.player_name} (${playerFirstYear} - ${playerFirstYear + Number(player.player_career_length)})`;
+    }
+
+    function onInputChange(_event: any, input : String) {
+        if (input.length > 2) {
+            setShowOptions(true);
+        } else {
+            setShowOptions(false);
+        }
     }
 }

@@ -20,10 +20,10 @@ thead {
 
 .player-input {
   text-align: center;
+  display: flex;
 }
 
 .player-input-text-area-container {
-  width: fit-content;
   margin: auto;
 }
 
@@ -35,4 +35,18 @@ thead {
 .react-autocomplete-input {
   top: unset !important;
   left: unset !important;
+}
+
+.lives-display-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.lives-display-title {
+  align-self: center;
+  font-size: larger;
+}
+
+.lives-display-icons {
+  align-self: center;
 }
